@@ -1,6 +1,6 @@
 {
   "name": "react-native-images-combine",
-  "version": "1.0.1",
+  "version": "1.0.14",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -12,9 +12,9 @@
   "author": "",
   "license": "",
   "devDependencies": {
-    "react-native": "0.41.2"
+    "react-native": "0.61.3"
   },
   "peerDependencies": {
-    "react-native": "0.41.2"
+    "react-native": "0.61.3"
   }
 }

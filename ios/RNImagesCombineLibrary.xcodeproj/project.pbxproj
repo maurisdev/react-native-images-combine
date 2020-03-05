@@ -7,69 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8B8F0914241111FD00C6BB08 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8F09052411115500C6BB08 /* libReact.a */; };
-		8B8F092424112C7B00C6BB08 /* ImageFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8F092324112C7B00C6BB08 /* ImageFramework.framework */; };
+		8B8F09712411697D00C6BB08 /* ImageFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F09702411697D00C6BB08 /* ImageFramework.m */; };
 		B3E7B58A1CC2AC0600A0062D /* RNImagesCombineLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNImagesCombineLibrary.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		8B8F09042411115500C6BB08 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8B8F08F92411115500C6BB08 /* React.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 83CBBA2E1A601D0E00E9B192;
-			remoteInfo = React;
-		};
-		8B8F09062411115500C6BB08 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8B8F08F92411115500C6BB08 /* React.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2D2A28131D9B038B00D4039D;
-			remoteInfo = "React-tvOS";
-		};
-		8B8F09082411115500C6BB08 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8B8F08F92411115500C6BB08 /* React.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 3D3C059A1DE3340900C268FA;
-			remoteInfo = yoga;
-		};
-		8B8F090A2411115500C6BB08 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8B8F08F92411115500C6BB08 /* React.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 3D3C06751DE3340C00C268FA;
-			remoteInfo = "yoga-tvOS";
-		};
-		8B8F090C2411115500C6BB08 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8B8F08F92411115500C6BB08 /* React.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 3D3CD9251DE5FBEC00167DC4;
-			remoteInfo = cxxreact;
-		};
-		8B8F090E2411115500C6BB08 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8B8F08F92411115500C6BB08 /* React.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 3D3CD9321DE5FBEE00167DC4;
-			remoteInfo = "cxxreact-tvOS";
-		};
-		8B8F09102411115500C6BB08 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8B8F08F92411115500C6BB08 /* React.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 3D3CD90B1DE5FBD600167DC4;
-			remoteInfo = jschelpers;
-		};
-		8B8F09122411115500C6BB08 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8B8F08F92411115500C6BB08 /* React.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 3D3CD9181DE5FBD800167DC4;
-			remoteInfo = "jschelpers-tvOS";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		58B511D91A9E6C8500147676 /* CopyFiles */ = {
@@ -85,8 +25,8 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRNImagesCombineLibrary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNImagesCombineLibrary.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		8B8F08F92411115500C6BB08 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
-		8B8F092324112C7B00C6BB08 /* ImageFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ImageFramework.framework; sourceTree = "<group>"; };
+		8B8F096F2411697D00C6BB08 /* ImageFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageFramework.h; sourceTree = "<group>"; };
+		8B8F09702411697D00C6BB08 /* ImageFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageFramework.m; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* RNImagesCombineLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNImagesCombineLibrary.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* RNImagesCombineLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNImagesCombineLibrary.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,8 +36,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B8F0914241111FD00C6BB08 /* libReact.a in Frameworks */,
-				8B8F092424112C7B00C6BB08 /* ImageFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,7 +55,8 @@
 			children = (
 				B3E7B5881CC2AC0600A0062D /* RNImagesCombineLibrary.h */,
 				B3E7B5891CC2AC0600A0062D /* RNImagesCombineLibrary.m */,
-				8B8F092324112C7B00C6BB08 /* ImageFramework.framework */,
+				8B8F096F2411697D00C6BB08 /* ImageFramework.h */,
+				8B8F09702411697D00C6BB08 /* ImageFramework.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
 				8B8F08F82411115400C6BB08 /* Frameworks */,
 			);
@@ -126,24 +65,8 @@
 		8B8F08F82411115400C6BB08 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8B8F08F92411115500C6BB08 /* React.xcodeproj */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		8B8F08FA2411115500C6BB08 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				8B8F09052411115500C6BB08 /* libReact.a */,
-				8B8F09072411115500C6BB08 /* libReact.a */,
-				8B8F09092411115500C6BB08 /* libyoga.a */,
-				8B8F090B2411115500C6BB08 /* libyoga.a */,
-				8B8F090D2411115500C6BB08 /* libcxxreact.a */,
-				8B8F090F2411115500C6BB08 /* libcxxreact.a */,
-				8B8F09112411115500C6BB08 /* libjschelpers.a */,
-				8B8F09132411115500C6BB08 /* libjschelpers.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,12 +114,6 @@
 			mainGroup = 58B511D21A9E6C8500147676;
 			productRefGroup = 58B511D21A9E6C8500147676;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 8B8F08FA2411115500C6BB08 /* Products */;
-					ProjectRef = 8B8F08F92411115500C6BB08 /* React.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				58B511DA1A9E6C8500147676 /* RNImagesCombineLibrary */,
@@ -204,70 +121,12 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXReferenceProxy section */
-		8B8F09052411115500C6BB08 /* libReact.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libReact.a;
-			remoteRef = 8B8F09042411115500C6BB08 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		8B8F09072411115500C6BB08 /* libReact.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libReact.a;
-			remoteRef = 8B8F09062411115500C6BB08 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		8B8F09092411115500C6BB08 /* libyoga.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libyoga.a;
-			remoteRef = 8B8F09082411115500C6BB08 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		8B8F090B2411115500C6BB08 /* libyoga.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libyoga.a;
-			remoteRef = 8B8F090A2411115500C6BB08 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		8B8F090D2411115500C6BB08 /* libcxxreact.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libcxxreact.a;
-			remoteRef = 8B8F090C2411115500C6BB08 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		8B8F090F2411115500C6BB08 /* libcxxreact.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libcxxreact.a;
-			remoteRef = 8B8F090E2411115500C6BB08 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		8B8F09112411115500C6BB08 /* libjschelpers.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libjschelpers.a;
-			remoteRef = 8B8F09102411115500C6BB08 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		8B8F09132411115500C6BB08 /* libjschelpers.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libjschelpers.a;
-			remoteRef = 8B8F09122411115500C6BB08 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
-
 /* Begin PBXSourcesBuildPhase section */
 		58B511D71A9E6C8500147676 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B8F09712411697D00C6BB08 /* ImageFramework.m in Sources */,
 				B3E7B58A1CC2AC0600A0062D /* RNImagesCombineLibrary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -369,7 +228,10 @@
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
 				);
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = RNImagesCombineLibrary;
 				SKIP_INSTALL = YES;
@@ -389,7 +251,10 @@
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
 				);
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = RNImagesCombineLibrary;
 				SKIP_INSTALL = YES;
