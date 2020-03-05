@@ -13,7 +13,7 @@ class RNImagesCombineLibraryModule(private val reactContext: ReactApplicationCon
     }
 
     @ReactMethod
-    fun concat() {
+    fun combineImages() {
         ImageCinema.concat(getInputBitmaps())
     }
 
