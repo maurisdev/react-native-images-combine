@@ -1,11 +1,13 @@
 package com.reactlibraryimagescombine
 
-import android.R.attr.src
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.os.ParcelFileDescriptor
+import androidx.core.net.toUri
 import com.facebook.react.bridge.*
 import com.facebook.react.uimanager.IllegalViewOperationException
 import image_cinema.ImageCinema
+import java.io.IOException
 import java.net.HttpURLConnection
 import java.net.URL
 
@@ -40,14 +42,26 @@ class RNImagesCombineLibraryModule(private val reactContext: ReactApplicationCon
         for (i in 0 until inputImages.size()) {
             val inputImage = inputImages.getMap(i);
             val inputImageUri = inputImage?.getString("uri")!!;
-            val url = URL(inputImageUri)
+            try {
+                val parcelFileDescriptor: ParcelFileDescriptor? = reactApplicationContext.contentResolver.openFileDescriptor(inputImageUri.toUri(), "r")
+                val fileDescriptor = parcelFileDescriptor?.fileDescriptor
+                val image = BitmapFactory.decodeFileDescriptor(fileDescriptor)
+                result.add(image)
+                if (parcelFileDescriptor != null) {
+                    parcelFileDescriptor.close()
+                }
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+            /*val url = URL(inputImageUri)
             val connection = url.openConnection() as HttpURLConnection
             connection.doInput = true
             connection.connect()
             val input = connection.inputStream
-            val myBitmap = BitmapFactory.decodeStream(input)
-            result.add(myBitmap)
+            val myBitmap = BitmapFactory.decodeStream(input)*/
+            /*result.add(myBitmap)*/
         }
+
         return result
     }
 
