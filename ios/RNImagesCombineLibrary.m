@@ -1,7 +1,6 @@
-
 #import "RNImagesCombineLibrary.h"
 #import "ImageFramework.h"
-
+#import "React/RCTConvert.h"
 @implementation RNImagesCombineLibrary
 
 - (dispatch_queue_t)methodQueue
@@ -20,8 +19,10 @@ RCT_REMAP_METHOD(combineImages,
     
     int i;
     for (i = 0; i < [inputImages count]; i++) {
-      id myArrayElement = [inputImages objectAtIndex:i];
-      [imagesArray addObject:myArrayElement];
+        NSDictionary *myArrayElement = [inputImages objectAtIndex:i];
+        UIImage *image = [RCTConvert UIImage:myArrayElement];
+
+        [imagesArray addObject:image];
     }
     
     NSArray *myarray = [imagesArray copy];
