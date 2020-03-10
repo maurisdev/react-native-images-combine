@@ -2,13 +2,14 @@ package com.reactlibraryimagescombine
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.os.ParcelFileDescriptor
-import androidx.core.net.toUri
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
+import android.util.Log
+import com.facebook.react.views.imagehelper.ResourceDrawableIdHelper
 import com.facebook.react.bridge.*
 import com.facebook.react.uimanager.IllegalViewOperationException
 import image_cinema.ImageCinema
 import java.io.IOException
-import java.net.HttpURLConnection
 import java.net.URL
 
 
@@ -29,40 +30,39 @@ class RNImagesCombineLibraryModule(private val reactContext: ReactApplicationCon
         }
     }
 
-    private fun getBitmapFactoryOptions(): BitmapFactory.Options {
-        val options = BitmapFactory.Options()
-        options.inSampleSize = 3
-        options.inJustDecodeBounds = true
-        return options
-    }
-
     private fun getBitmapsFromDrawables(inputImages: ReadableArray): List<Bitmap> {
-        val options = getBitmapFactoryOptions()
         val result = arrayListOf<Bitmap>()
         for (i in 0 until inputImages.size()) {
             val inputImage = inputImages.getMap(i);
             val inputImageUri = inputImage?.getString("uri")!!;
-            try {
-                val parcelFileDescriptor: ParcelFileDescriptor? = reactApplicationContext.contentResolver.openFileDescriptor(inputImageUri.toUri(), "r")
-                val fileDescriptor = parcelFileDescriptor?.fileDescriptor
-                val image = BitmapFactory.decodeFileDescriptor(fileDescriptor)
-                result.add(image)
-                if (parcelFileDescriptor != null) {
-                    parcelFileDescriptor.close()
-                }
-            } catch (e: IOException) {
-                e.printStackTrace()
-            }
-            /*val url = URL(inputImageUri)
-            val connection = url.openConnection() as HttpURLConnection
-            connection.doInput = true
-            connection.connect()
-            val input = connection.inputStream
-            val myBitmap = BitmapFactory.decodeStream(input)*/
-            /*result.add(myBitmap)*/
+            result.add(getBitmap(inputImageUri)!!)
         }
 
         return result
+    }
+
+    private fun getBitmap(url: String): Bitmap? {
+        var bitmap: Bitmap? = null
+        try { // If we are running the app in debug mode, the "local" image will be served from htt://localhost:8080
+            if (!url.startsWith("http")) { // Gets the drawable from the RN's helper for local resources
+                val helper: ResourceDrawableIdHelper = ResourceDrawableIdHelper.getInstance()
+                val image: Drawable = helper.getResourceDrawable(reactApplicationContext, url)!!
+                bitmap = if (image is BitmapDrawable) {
+                    image.bitmap
+                } else {
+                    BitmapFactory.decodeFile(url)
+                }
+            } else { // Open connection to the URL and decodes the image
+                val con = URL(url).openConnection()
+                con.connect()
+                val input = con.getInputStream()
+                bitmap = BitmapFactory.decodeStream(input)
+                input.close()
+            }
+        } catch (ex: IOException) {
+            Log.w("ImageCombineLibrary", "Could not load the image", ex)
+        }
+        return bitmap
     }
 
 }
