@@ -1,5 +1,6 @@
 
 # react-native-images-combine
+React Native Library for combine images
 
 ## Getting started
 
