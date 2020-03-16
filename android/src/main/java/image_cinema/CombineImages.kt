@@ -4,7 +4,9 @@ import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
+import android.graphics.Paint
 import android.graphics.drawable.BitmapDrawable
+import android.os.Build
 import android.util.Log
 import androidx.annotation.DrawableRes
 
@@ -38,7 +40,7 @@ object CombineImages {
 
         return try {
             val result =
-                getBitmapFromBitmapDrawable(list.first()).copy(Bitmap.Config.ARGB_8888, true)
+                    getBitmapFromBitmapDrawable(list.first()).copy(Bitmap.Config.ARGB_8888, true)
             val canvas = Canvas(result)
             list.forEachIndexed { index, url ->
                 if (index != 0) {
@@ -57,16 +59,11 @@ object CombineImages {
 
     private fun getBitmapFromBitmapDrawable(drawable: BitmapDrawable) = drawable.bitmap
 
-    private val bitmapOptions = BitmapFactory.Options().apply {
-        inSampleSize = 1
-    }
-
     fun combineImageFromResources(resources: Resources, list: List<Int>): String? {
         if (list.isNullOrEmpty()) return null
 
         return try {
-            val result =
-                getBitmapFromResource(resources, list.first()).copy(Bitmap.Config.ARGB_8888, true)
+            val result = getBitmapFromResourceAsMutable(resources, list.first())
             val canvas = Canvas(result)
             list.forEachIndexed { index, url ->
                 if (index != 0) {
@@ -83,6 +80,27 @@ object CombineImages {
         }
     }
 
+    private val bitmapOptions = BitmapFactory.Options().apply {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            outConfig = Bitmap.Config.HARDWARE
+        }
+        inSampleSize = 1
+        inScaled = false
+        inMutable = false
+    }
+
+    private val bitmapOptionsAsMutable = BitmapFactory.Options().apply {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            outConfig = Bitmap.Config.HARDWARE
+        }
+        inSampleSize = 1
+        inScaled = false
+        inMutable = true
+    }
+
     private fun getBitmapFromResource(resources: Resources, @DrawableRes id: Int) =
-        BitmapFactory.decodeResource(resources, id, bitmapOptions)
+            BitmapFactory.decodeResource(resources, id, bitmapOptions)
+
+    private fun getBitmapFromResourceAsMutable(resources: Resources, @DrawableRes id: Int) =
+            BitmapFactory.decodeResource(resources, id, bitmapOptionsAsMutable)
 }

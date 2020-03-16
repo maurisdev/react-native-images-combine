@@ -9,16 +9,16 @@ import java.io.ByteArrayOutputStream
 
 object Converter {
 
-     fun convertBitmapToBase64(bitmap: Bitmap): String? {
+    fun convertBitmapToBase64(bitmap: Bitmap): String? {
         val byteArrayOutputStream = ByteArrayOutputStream()
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
         val byteArray: ByteArray = byteArrayOutputStream.toByteArray()
         return Base64.encodeToString(byteArray, Base64.DEFAULT)
     }
 
-     fun convertBase64ToBitmap(b64: String): Bitmap? {
+    fun convertBase64ToBitmap(b64: String): Bitmap? {
         val imageAsBytes =
-            Base64.decode(b64.toByteArray(), Base64.DEFAULT)
+                Base64.decode(b64.toByteArray(), Base64.DEFAULT)
         return BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.size)
     }
 }
