@@ -9,6 +9,7 @@ import android.graphics.drawable.BitmapDrawable
 import android.os.Build
 import android.util.Log
 import androidx.annotation.DrawableRes
+import java.net.URL
 
 object CombineImages {
 
@@ -16,24 +17,35 @@ object CombineImages {
         if (list.isNullOrEmpty()) return null
 
         return try {
-            val result = getBitmapFromUrl(list.first()).copy(Bitmap.Config.ARGB_8888, true)
-            val canvas = Canvas(result)
+            val result = getBitmapFromUrl(list.first())?.copy(Bitmap.Config.ARGB_8888, true)
+            val canvas = result?.let { Canvas(it) }
             list.forEachIndexed { index, url ->
                 if (index != 0) {
                     var bitmap = getBitmapFromUrl(url)
-                    bitmap.let { canvas.drawBitmap(it, 0f, 0f, null) }
-                    bitmap.recycle()
+                    bitmap.let {
+                        if (it != null) {
+                            canvas?.drawBitmap(it, 0f, 0f, null)
+                        }
+                    }
+                    bitmap?.recycle()
                     bitmap = null
                 }
             }
-            Converter.convertBitmapToBase64(result)
+            Converter.convertBitmapToBase64(result!!)
         } catch (e: Throwable) {
             Log.e("ImageCinema", null, e)
             null
         }
     }
 
-    private fun getBitmapFromUrl(url: String) = BitmapFactory.decodeFile(url, bitmapOptions)
+    private fun getBitmapFromUrl(url: String): Bitmap? {
+        val con = URL(url).openConnection()
+        con.connect()
+        val input = con.getInputStream()
+        val bitmap = BitmapFactory.decodeStream(input)
+        input.close()
+        return bitmap
+    }
 
     fun combineImageFromBitmapDrawables(list: List<BitmapDrawable>): String? {
         if (list.isNullOrEmpty()) return null

@@ -1,8 +1,8 @@
 package com.reactlibraryimagescombine
 
-import com.facebook.react.views.imagehelper.ResourceDrawableIdHelper
 import com.facebook.react.bridge.*
 import com.facebook.react.uimanager.IllegalViewOperationException
+import com.facebook.react.views.imagehelper.ResourceDrawableIdHelper
 import image_cinema.CombineImages
 
 
@@ -16,7 +16,14 @@ class RNImagesCombineLibraryModule(private val reactContext: ReactApplicationCon
             inputImages: ReadableArray,
             promise: Promise) {
         try {
-            val imageString = CombineImages.combineImageFromResources(reactApplicationContext.resources, geDrawablesId(inputImages))
+            val checkInputImage = inputImages.getMap(0);
+            val checkInputImageUri = checkInputImage?.getString("uri")!!;
+            val imageString: String?
+            imageString = if (!checkInputImageUri.startsWith("http")) {
+                CombineImages.combineImageFromResources(reactApplicationContext.resources, geDrawablesId(inputImages))
+            } else {
+                CombineImages.combineImageFromUrls(getImagesUrl(inputImages))
+            }
             promise.resolve(imageString)
         } catch (e: IllegalViewOperationException) {
             promise.reject(null, e)
@@ -31,6 +38,16 @@ class RNImagesCombineLibraryModule(private val reactContext: ReactApplicationCon
             val helper: ResourceDrawableIdHelper = ResourceDrawableIdHelper.getInstance()
             val imageId: Int = helper.getResourceDrawableId(reactApplicationContext, inputImageUri)!!
             result.add(imageId)
+        }
+        return result
+    }
+
+    private fun getImagesUrl(inputImages: ReadableArray): List<String> {
+        val result = arrayListOf<String>()
+        for (i in 0 until inputImages.size()) {
+            val inputImage = inputImages.getMap(i);
+            val inputImageUri = inputImage?.getString("uri")!!;
+            result.add(inputImageUri)
         }
         return result
     }
