@@ -23,4 +23,20 @@ ImagesCombineLibrary.combineImages([
               
 });
 ```
+
+### Web Images, DynamicFiles, or Base64
+Alternatively if you have a dynamic url, temp file, or gallery path use the following syntax
+```javascript
+import ImagesCombineLibrary from 'react-native-images-combine';
+
+const image1 = base64Asset // any base64 asset
+const image2 = fileUriAsset // any file url asset example file:///data/user/0/com.myapp//cache/tempitem.png
+      ImagesCombineLibrary.combineImages([
+        { uri: image1 },
+        { uri: image2 },
+      ]).then(base64 => {
+        // do something here
+      })
+```
+
   
