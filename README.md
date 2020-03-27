@@ -25,7 +25,7 @@ ImagesCombineLibrary.combineImages([
 ```
 
 ### Web Images, DynamicFiles, or Base64
-Alternatively if you have a dynamic url, temp file, or gallery path use the following syntax
+Alternatively if you have a dynamic url **android and iOS** or file **iOS only** use the following syntax
 ```javascript
 import ImagesCombineLibrary from 'react-native-images-combine';
 
