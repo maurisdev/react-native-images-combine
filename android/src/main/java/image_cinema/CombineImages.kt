@@ -8,6 +8,7 @@ import android.graphics.Paint
 import android.graphics.drawable.BitmapDrawable
 import android.os.Build
 import android.util.Log
+import android.util.Base64
 import androidx.annotation.DrawableRes
 import java.net.URL
 
