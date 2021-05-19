@@ -19,8 +19,8 @@ class RNImagesCombineLibraryModule(private val reactContext: ReactApplicationCon
             val checkInputImage = inputImages.getMap(0);
             val checkInputImageUri = checkInputImage?.getString("uri")!!;
             val imageString: String?
-            imageString = if (!checkInputImageUri.startsWith("http")) {
-                CombineImages.combineImageFromResources(reactApplicationContext.resources, geDrawablesId(inputImages))
+            imageString = if (!checkInputImageUri.startsWith("http") && !checkInputImageUri.startsWith("data") && !checkInputImageUri.startsWith("file")) {
+                CombineImages.combineImageFromResources(reactApplicationContext.resources, getDrawablesId(inputImages))
             } else {
                 CombineImages.combineImageFromUrls(getImagesUrl(inputImages))
             }
@@ -30,7 +30,7 @@ class RNImagesCombineLibraryModule(private val reactContext: ReactApplicationCon
         }
     }
 
-    private fun geDrawablesId(inputImages: ReadableArray): List<Int> {
+    private fun getDrawablesId(inputImages: ReadableArray): List<Int> {
         val result = arrayListOf<Int>()
         for (i in 0 until inputImages.size()) {
             val inputImage = inputImages.getMap(i);
