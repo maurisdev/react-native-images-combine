@@ -17,9 +17,9 @@
   "license": "",
   "homepage": "https://github.com/maurisdev/react-native-images-combine",
   "devDependencies": {
-    "react-native": "0.61.3"
+    "react-native": "0.62.3"
   },
   "peerDependencies": {
-    "react-native": "0.61.3"
+    "react-native": "0.62.3"
   }
 }
