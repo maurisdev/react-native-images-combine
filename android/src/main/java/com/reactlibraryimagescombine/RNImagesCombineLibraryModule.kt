@@ -19,7 +19,7 @@ class RNImagesCombineLibraryModule(private val reactContext: ReactApplicationCon
             val checkInputImage = inputImages.getMap(0);
             val checkInputImageUri = checkInputImage?.getString("uri")!!;
             val imageString: String?
-            imageString = if (!checkInputImageUri.startsWith("http")) {
+            imageString = if (!checkInputImageUri.startsWith("http") && !checkInputImageUri.startsWith("file")) {
                 CombineImages.combineImageFromResources(reactApplicationContext.resources, geDrawablesId(inputImages))
             } else {
                 CombineImages.combineImageFromUrls(getImagesUrl(inputImages))
